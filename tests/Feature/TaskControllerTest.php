@@ -31,6 +31,7 @@ class TaskControllerTest extends TestCase
         ]);
     }
 
+    // create subtask
     /** @test */
     public function a_user_can_create_a_subtask()
     {
@@ -53,7 +54,7 @@ class TaskControllerTest extends TestCase
             'deleted_at' => null,
         ]);
     }
-
+    // test list task
     /** @test */
     public function a_user_can_view_list_of_pending_tasks_along_with_its_subtasks()
     {
@@ -102,7 +103,7 @@ class TaskControllerTest extends TestCase
             ])
             ->assertJsonPath('total', 1);
     }
-
+    // thay đổi trạng thái
     /** @test */
     public function a_user_can_mark_a_task_complete()
     {
@@ -123,7 +124,7 @@ class TaskControllerTest extends TestCase
             'status' => true,
         ]);
     }
-
+    // check delete task
     /** @test */
     public function a_user_can_delete_a_task()
     {
@@ -143,6 +144,7 @@ class TaskControllerTest extends TestCase
             'deleted_at' => now(),
         ]);
     }
+    // search task bới title
 
     /** @test */
     public function a_user_can_search_tasks_by_title()
@@ -167,7 +169,7 @@ class TaskControllerTest extends TestCase
 
         $response->assertStatus(200)->assertJsonPath('total', 2);
     }
-
+    //task hom nay
     /** @test */
     public function a_user_can_filter_tasks_which_due_today()
     {
@@ -191,7 +193,7 @@ class TaskControllerTest extends TestCase
 
         $response->assertStatus(200)->assertJsonPath('total', 1);
     }
-
+    // task tuần này
     /** @test */
     public function a_user_can_filter_tasks_which_is_due_this_week()
     {
@@ -215,6 +217,7 @@ class TaskControllerTest extends TestCase
 
         $response->assertStatus(200)->assertJsonPath('total', 2);
     }
+    // Task tuần sau
 
     /** @test */
     public function a_user_can_filter_tasks_which_is_due_next_week()
@@ -229,9 +232,10 @@ class TaskControllerTest extends TestCase
             'due_date' => now()->add(1, 'day')->format('Y-m-d'),
             'status' => true,
         ]);
+        // ngay đây
         Task::factory()->create([
             'title' => 'Clean up garage',
-            'due_date' => now()->add(4, 'day')->format('Y-m-d'),
+            'due_date' => now()->add(7, 'day')->format('Y-m-d'),
             'status' => true,
         ]);
 
@@ -239,7 +243,7 @@ class TaskControllerTest extends TestCase
 
         $response->assertStatus(200)->assertJsonPath('total', 1);
     }
-
+    // Task qua hạn
     /** @test */
     public function a_user_can_filter_tasks_which_is_overdue()
     {
