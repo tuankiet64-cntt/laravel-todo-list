@@ -1,67 +1,45 @@
-# Laravel ToDo App
+# Laravel Todo List API
 
-This is a simple ToDo app with multiple user support.
 
-This is built on Laravel Framework 5.1. This was built for demonstrate purpose.
+A simple API to manage todo lists built with Laravel.
 
 ## Installation
 
-Clone the repository-
-```
-git clone https://github.com/milon521/laravel-todo.git
+1. Clone the repo locally:
+    ```sh
+    git clone git@github.com:ishanvyas22/laravel-todo-list-api.git
+    cd laravel-todo-list-api
+    ```
+
+2. Install dependencies
+    ```sh
+    composer install
+    ```
+
+3. Generate application key (if not already generated)
+    ```sh
+    php artisan key:generate
+    ```
+
+4. Run database migrations
+    ```sh
+    php artisan migrate
+    ```
+
+5. Run the dev server (the output will give the address):
+    ```sh
+    php artisan serve
+    ```
+
+## Running tests
+
+```sh
+php artisan test
 ```
 
-Then cd into the folder with this command-
-```
-cd laravel-todo
-```
+## Pending
 
-Then do a composer install
-```
-composer install
-```
-
-Then create a environment file using this command-
-```
-cp .env.example .env
-```
-
-Then edit `.env` file with appropriate credential for your database server. Just edit these two parameter(`DB_USERNAME`, `DB_PASSWORD`).
-
-Then create a database named `todos` and then do a database migration using this command-
-```
-php artisan migrate
-```
-
-Then change permission of storage folder using thins command-
-```
-(sudo) chmod 777 -R storage
-```
-
-At last generate application key, which will be used for password hashing, session and cookie encryption etc.
-```
-php artisan key:generate
-```
-
-## Run server
-
-Run server using this command-
-```
-php artisan serve
-```
-
-Then go to `http://localhost:8000` from your browser and see the app.
-
-## Ask a question?
-
-If you have any query please contact at milon521@gmail.com
-
-## Screenshot
-
-![Landing Page](/screenshots/1.png)
-![Sign In Page](/screenshots/2.png)
-![Registration Page](/screenshots/3.png)
-![ToDo List Page](/screenshots/4.png)
-![Create New ToDo Page](/screenshots/5.png)
-![User Profile Page](/screenshots/6.png)
-"# laravel-todo-list" 
+- [ ] Add basic validation in create, update task API call
+- [ ] Take config for task status
+- [ ] Global scope
+- [ ] Split methods from `TaskController`
